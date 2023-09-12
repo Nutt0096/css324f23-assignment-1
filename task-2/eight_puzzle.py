@@ -51,4 +51,19 @@ def h1(s):
 def h3(s):
     # implement this function
     board, _, _ = s
-    return 0
+
+    row_diff = 0
+    col_diff = 0
+    for idx in range(0, 9):
+        if board[idx] == 0:
+            if idx%3 != 2:
+                col_diff += 1
+            if idx//3 != 2:
+                col_diff += 1
+        else:
+            if (board[idx]-1)%3 != idx%3:
+                col_diff += 1
+            if (board[idx]-1)//3 != idx//3:
+                row_diff += 1
+                
+    return row_diff + col_diff
